@@ -23,7 +23,7 @@ namespace Carga_Alumno_Profesor
 
         public Alumno objEntAlumno = new Alumno();
         public NegAlumnos objNegAlumno = new NegAlumnos();
-        long dni2;
+        
 
         #endregion
 
@@ -118,7 +118,7 @@ namespace Carga_Alumno_Profesor
         private void btMod_Click(object sender, EventArgs e)
         {
 
-            if (objEntAlumno.Dni == null)
+            if (objEntAlumno.Nombre== "" )
             {
                 MessageBox.Show("Debe completar todos los campos para poder agregar un alumno", "Error");
             }

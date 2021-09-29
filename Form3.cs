@@ -115,7 +115,7 @@ namespace Carga_Alumno_Profesor
 
         private void btMod_Click(object sender, EventArgs e)
         {
-            if (ObjEntDocente.Dni == null)
+            if (ObjEntDocente.Nombre == "")
             {
                 MessageBox.Show("Debe completar todos los campos para poder agregar un alumno", "Error");
             }
