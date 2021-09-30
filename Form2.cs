@@ -85,7 +85,7 @@ namespace Carga_Alumno_Profesor
         }
         private void btBorrar_Click(object sender, EventArgs e)
         {
-            if (DGValumno.Rows.Count.Equals(1))
+            if (DGValumno.Rows.Count.Equals(0))
             {
                 MessageBox.Show("No se pueden borrar mas filas", "Error en la tabla");
             }

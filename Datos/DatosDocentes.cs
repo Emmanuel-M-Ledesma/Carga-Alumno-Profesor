@@ -30,8 +30,9 @@ namespace Datos
                     cmd.Parameters.AddWithValue("@Fecha", objDocente.FechNac);
                     cmd.Parameters.AddWithValue("@Edad", objDocente.Edad(edad));
                     cmd.Parameters.AddWithValue("@Sexo", objDocente.Sexo);
-                    cmd.Parameters.AddWithValue("@Legajo", objDocente.Legajo);
                     cmd.Parameters.AddWithValue("@Materia", objDocente.Materia);
+                    cmd.Parameters.AddWithValue("@Legajo", objDocente.Legajo);
+                    
                     resultado = cmd.ExecuteNonQuery();
                 }
                 catch (Exception ez)

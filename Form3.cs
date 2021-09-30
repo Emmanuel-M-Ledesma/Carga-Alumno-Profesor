@@ -49,9 +49,11 @@ namespace Carga_Alumno_Profesor
             cbMateria.Items.Add("Matematica");
             cbMateria.Items.Add("Base de datos");
 
+            
             FillDGV();
             btBorrarD.Enabled = false;
             btMod.Enabled = false;
+            
         }
 
         #endregion
@@ -88,7 +90,7 @@ namespace Carga_Alumno_Profesor
 
         private void btBorrarD_Click(object sender, EventArgs e)
         {
-            if (DGVdocente.Rows.Count.Equals(1))
+            if (DGVdocente.Rows.Count.Equals(0))
             {
                 MessageBox.Show("No se pueden borrar mas filas", "Error en la tabla");
             }
@@ -161,8 +163,8 @@ namespace Carga_Alumno_Profesor
                     txtDniD.Text = DGVdocente[1, pos].Value.ToString();
                     txtNombreD.Text = DGVdocente[0, pos].Value.ToString();
                     dtpFechaD.Value = System.Convert.ToDateTime(DGVdocente[2, pos].Value);
-                    cbMateria.Text = DGVdocente[6, pos].Value.ToString();
-                    txtLegajoD.Text = DGVdocente[5, pos].Value.ToString();
+                    cbMateria.Text = DGVdocente[5, pos].Value.ToString();
+                    txtLegajoD.Text = DGVdocente[6, pos].Value.ToString();
                     if (DGVdocente[4, pos].Value.ToString() == "Masculino")
                     {
                         rdMascD.Checked = true;
@@ -244,7 +246,7 @@ namespace Carga_Alumno_Profesor
                     {
                         dr[4] = "Otro";
                     }
-                    DGVdocente.Rows.Add(dr[0].ToString(), dr[1].ToString(), Convert.ToDateTime(dr[2]).ToShortDateString(), dr[3].ToString(), dr[4].ToString(), dr[6].ToString(), dr[5].ToString());
+                    DGVdocente.Rows.Add(dr[0].ToString(), dr[1].ToString(), Convert.ToDateTime(dr[2]).ToShortDateString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString());
 
                 }
                 lblError.Text = "";
@@ -274,5 +276,14 @@ namespace Carga_Alumno_Profesor
         }
 
         #endregion
+
+        //private void txtDniD_TextChanged(object sender, EventArgs e)
+        //{
+        //    DGVdocente.DataSource = DGVdocente;
+        //    BindingSource buscar = new BindingSource();
+        //    buscar.DataSource = DGVdocente.DataSource;
+        //    buscar.Filter = "Dni like '%" + txtDniD.Text + "%'";
+        //    DGVdocente.DataSource = buscar;
+        //}
     }
 }
