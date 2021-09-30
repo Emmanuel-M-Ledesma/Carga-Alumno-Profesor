@@ -10,7 +10,7 @@ namespace Entidad
     {
         private string carrera;
         private string legajo;
-        private long DNI;
+
         #region Propiedades
         public string Carrera
         {
@@ -23,11 +23,6 @@ namespace Entidad
             set { legajo = value; }
         }
 
-        public long DNI2
-        {
-            get { return DNI; }
-            set { DNI = value; }
-        }
         #endregion
 
 
@@ -35,11 +30,11 @@ namespace Entidad
         public Alumno() 
         { 
         }
-        public Alumno(string Nom, long Du, DateTime FecNac, char Sex, string Carr, string Leg, long DNI) : base(Nom, Du, FecNac, Sex)
+        public Alumno(string Nom, long Du, DateTime FecNac, char Sex, string Carr, string Leg) : base(Nom, Du, FecNac, Sex)
         {
             Carrera = Carr;
             Legajo = Leg;
-            DNI2 = DNI;
+
         }
         #endregion
 

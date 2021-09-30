@@ -32,7 +32,7 @@ namespace Carga_Alumno_Profesor
             this.panel1 = new System.Windows.Forms.Panel();
             this.btMod = new System.Windows.Forms.Button();
             this.lblError = new System.Windows.Forms.Label();
-            this.rdHelicoptero = new System.Windows.Forms.RadioButton();
+            this.rdOtro = new System.Windows.Forms.RadioButton();
             this.cbMateria = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -57,10 +57,10 @@ namespace Carga_Alumno_Profesor
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.BackColor = System.Drawing.Color.AliceBlue;
             this.panel1.Controls.Add(this.btMod);
             this.panel1.Controls.Add(this.lblError);
-            this.panel1.Controls.Add(this.rdHelicoptero);
+            this.panel1.Controls.Add(this.rdOtro);
             this.panel1.Controls.Add(this.cbMateria);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
@@ -103,16 +103,16 @@ namespace Carga_Alumno_Profesor
             this.lblError.Size = new System.Drawing.Size(0, 13);
             this.lblError.TabIndex = 69;
             // 
-            // rdHelicoptero
+            // rdOtro
             // 
-            this.rdHelicoptero.AutoSize = true;
-            this.rdHelicoptero.Location = new System.Drawing.Point(312, 67);
-            this.rdHelicoptero.Name = "rdHelicoptero";
-            this.rdHelicoptero.Size = new System.Drawing.Size(45, 17);
-            this.rdHelicoptero.TabIndex = 68;
-            this.rdHelicoptero.TabStop = true;
-            this.rdHelicoptero.Text = "Otro";
-            this.rdHelicoptero.UseVisualStyleBackColor = true;
+            this.rdOtro.AutoSize = true;
+            this.rdOtro.Location = new System.Drawing.Point(312, 67);
+            this.rdOtro.Name = "rdOtro";
+            this.rdOtro.Size = new System.Drawing.Size(45, 17);
+            this.rdOtro.TabIndex = 68;
+            this.rdOtro.TabStop = true;
+            this.rdOtro.Text = "Otro";
+            this.rdOtro.UseVisualStyleBackColor = true;
             // 
             // cbMateria
             // 
@@ -257,6 +257,7 @@ namespace Carga_Alumno_Profesor
             // 
             // DGVdocente
             // 
+            this.DGVdocente.AllowUserToAddRows = false;
             this.DGVdocente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVdocente.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DGVdocente.Location = new System.Drawing.Point(0, 0);
@@ -302,7 +303,7 @@ namespace Carga_Alumno_Profesor
         private System.Windows.Forms.TextBox txtDniD;
         private System.Windows.Forms.TextBox txtNombreD;
         private System.Windows.Forms.ComboBox cbMateria;
-        private System.Windows.Forms.RadioButton rdHelicoptero;
+        private System.Windows.Forms.RadioButton rdOtro;
         private System.Windows.Forms.Label lblError;
         private System.Windows.Forms.Button btMod;
     }

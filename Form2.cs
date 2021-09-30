@@ -19,14 +19,10 @@ namespace Carga_Alumno_Profesor
 {
     public partial class frmAlumno : Form
     {
-        #region Atributos
 
         public Alumno objEntAlumno = new Alumno();
         public NegAlumnos objNegAlumno = new NegAlumnos();
-        
-
-        #endregion
-
+      
         #region Constructor
 
         public frmAlumno()
@@ -43,9 +39,9 @@ namespace Carga_Alumno_Profesor
 
             DGValumno.Columns[0].Width = 200;
             DGValumno.Columns[1].Width = 60;
-            DGValumno.Columns[2].Width = 100;
-            DGValumno.Columns[3].Width = 30;
-            DGValumno.Columns[4].Width = 50;
+            DGValumno.Columns[2].Width = 75;
+            DGValumno.Columns[3].Width = 40;
+            DGValumno.Columns[4].Width = 65;
             DGValumno.Columns[5].Width = 80;
             DGValumno.Columns[6].Width = 200;
 
@@ -113,6 +109,8 @@ namespace Carga_Alumno_Profesor
             }
             btAdd.Enabled = true;
             btMod.Enabled = false;
+            btBorrar.Enabled = false;
+            txtDni.Enabled = true;
         }
 
         private void btMod_Click(object sender, EventArgs e)
@@ -142,12 +140,14 @@ namespace Carga_Alumno_Profesor
             btMod.Enabled = false;
             btAdd.Enabled = true;
             btBorrar.Enabled = false;
+            txtDni.Enabled = true;
         }
 
         private void DGValumno_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            txtDni.Enabled = false;
             int pos = DGValumno.CurrentRow.Index;
-            if (lblError.Text != "")
+            if (DGValumno[1, pos].Value == null)
             {
                 MessageBox.Show("La fila debe contener datos");
             }
@@ -162,11 +162,11 @@ namespace Carga_Alumno_Profesor
                 dtpFecha.Value = System.Convert.ToDateTime(DGValumno[2, pos].Value);
                 cbCarreraA.Text = DGValumno[6, pos].Value.ToString();
                 txtLegajo.Text = DGValumno[5, pos].Value.ToString();
-                if (DGValumno[4, pos].Value.ToString() == "M")
+                if (DGValumno[4, pos].Value.ToString() == "Masculino")
                 {
                     rdMasc.Checked = true;
                 }
-                else if (DGValumno[4, pos].Value.ToString() == "F")
+                else if (DGValumno[4, pos].Value.ToString() == "Femenino")
                 {
                     rdFem.Checked = true;
                 }
@@ -174,26 +174,26 @@ namespace Carga_Alumno_Profesor
                 {
                     rdOtro.Checked = true;
                 }
-                objEntAlumno.DNI2 = long.Parse(DGValumno[1, pos].Value.ToString());
+
             }
         }
         #endregion
 
         #region Metodos
-        private string SexoA()
+        private char SexoA()
         {
-            string SexoA = "No selecciono sexo";
+            char SexoA = 'x';
             if (rdFem.Checked)
             {
-                SexoA = "F";
+                SexoA = 'F';
             }
             if (rdMasc.Checked)
             {
-                SexoA = "M";
+                SexoA = 'M';
             }
             if (rdOtro.Checked)
             {
-                SexoA = "X";
+                SexoA = 'O';
             }
             return SexoA;
         }
@@ -206,8 +206,18 @@ namespace Carga_Alumno_Profesor
             {
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {
-                    //int edad = (int)dr[2];
-                    //objEntAlumno.Edad(edad);
+                    if (dr[4].ToString() == "M" )
+                    {
+                        dr[4] = "Masculino";
+                    }
+                    if (dr[4].ToString() == "F")
+                    {
+                        dr[4] = "Femenino";
+                    }
+                    if (dr[4].ToString() == "O")
+                    {
+                        dr[4] = "Otro";
+                    }
                     DGValumno.Rows.Add(dr[0].ToString(), dr[1].ToString(), Convert.ToDateTime(dr[2]).ToShortDateString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(),dr[6].ToString());
                     
                     
@@ -225,7 +235,7 @@ namespace Carga_Alumno_Profesor
             objEntAlumno.Nombre = txtNombre.Text;
             objEntAlumno.Dni = long.Parse(txtDni.Text);
             objEntAlumno.FechNac = dtpFecha.Value;
-            objEntAlumno.Sexo = char.Parse(SexoA());
+            objEntAlumno.Sexo = SexoA();
             objEntAlumno.Legajo = txtLegajo.Text;
             objEntAlumno.Carrera = cbCarreraA.Text;
             objEntAlumno.Edad(dtpFecha.Value.Year);

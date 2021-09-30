@@ -12,7 +12,7 @@ namespace Entidad
 
         private string materia;
         private string legajo;
-        private long DNI;
+
 
         #endregion
 
@@ -29,11 +29,7 @@ namespace Entidad
             get { return legajo; }
             set { legajo =value; }
         }
-        public long DNI2
-        {
-            get { return DNI; }
-            set { DNI = value; }
-        }
+
         #endregion
 
         #region Constructores
@@ -43,11 +39,11 @@ namespace Entidad
 
         }
         
-        public Docente(string Nom,long Dni, DateTime FecNac,Char Sex, string Mat, String Leg, long DNI) : base(Nom, Dni, FecNac, Sex)
+        public Docente(string Nom,long Dni, DateTime FecNac,Char Sex, string Mat, String Leg) : base(Nom, Dni, FecNac, Sex)
         {
             Materia = Mat;
             Legajo = Leg;
-            DNI2 = DNI;
+
         }
 
 

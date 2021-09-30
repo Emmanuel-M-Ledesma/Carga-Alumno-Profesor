@@ -16,13 +16,9 @@ namespace Carga_Alumno_Profesor
 {
     public partial class frmDocente : Form
     {
-        #region Atributos
-
-
         public Docente ObjEntDocente = new Docente();
         public NegDocentes ObjNegDocentes = new NegDocentes();
 
-        #endregion
 
         #region Constructor
 
@@ -35,15 +31,15 @@ namespace Carga_Alumno_Profesor
             DGVdocente.Columns[2].HeaderText = "Fecha de nacimiento";
             DGVdocente.Columns[3].HeaderText = "Edad";
             DGVdocente.Columns[4].HeaderText = "Sexo";
-            DGVdocente.Columns[5].HeaderText = "Legajo";
-            DGVdocente.Columns[6].HeaderText = "Materia";
+            DGVdocente.Columns[6].HeaderText = "Legajo";
+            DGVdocente.Columns[5].HeaderText = "Materia";
 
 
             DGVdocente.Columns[0].Width = 200;
             DGVdocente.Columns[1].Width = 60;
-            DGVdocente.Columns[2].Width = 100;
-            DGVdocente.Columns[3].Width = 30;
-            DGVdocente.Columns[4].Width = 50;
+            DGVdocente.Columns[2].Width = 75;
+            DGVdocente.Columns[3].Width = 40;
+            DGVdocente.Columns[4].Width = 65;
             DGVdocente.Columns[5].Width = 80;
             DGVdocente.Columns[6].Width = 200;
 
@@ -111,6 +107,10 @@ namespace Carga_Alumno_Profesor
                     Limpiar();
                 }
             }
+            btAddD.Enabled = true;
+            btBorrarD.Enabled = false;
+            btMod.Enabled = false;
+            txtDniD.Enabled = true;
         }
 
         private void btMod_Click(object sender, EventArgs e)
@@ -139,59 +139,70 @@ namespace Carga_Alumno_Profesor
             btMod.Enabled = false;
             btAddD.Enabled = true;
             btBorrarD.Enabled = false;
+            txtDniD.Enabled = true;
         }
 
         private void DGVdocente_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int pos = DGVdocente.CurrentRow.Index;
-            if (lblError.Text != "")
+            try
             {
-                MessageBox.Show("", "Error");
-            }
-            else
-            { 
-                btAddD.Enabled = false;
-                btMod.Enabled = true;
-                btBorrarD.Enabled = true;
-
-                txtDniD.Text = DGVdocente[1, pos].Value.ToString();
-                txtNombreD.Text = DGVdocente[0, pos].Value.ToString();
-                dtpFechaD.Value = System.Convert.ToDateTime(DGVdocente[2, pos].Value);
-                cbMateria.Text = DGVdocente[6, pos].Value.ToString();
-                txtLegajoD.Text = DGVdocente[5, pos].Value.ToString();
-                if (DGVdocente[4, pos].Value.ToString() == "M")
+                txtDniD.Enabled = false;
+                int pos = DGVdocente.CurrentRow.Index;
+                if (DGVdocente[1, pos].Value== null)
                 {
-                    rdMascD.Checked = true;
-                }
-                else if (DGVdocente[4, pos].Value.ToString() == "F")
-                {
-                    rdFemD.Checked = true;
+                    MessageBox.Show("La fila debe contener datos", "Error");
                 }
                 else
                 {
-                    rdHelicoptero.Checked = true;
+                    btAddD.Enabled = false;
+                    btMod.Enabled = true;
+                    btBorrarD.Enabled = true;
+
+                    txtDniD.Text = DGVdocente[1, pos].Value.ToString();
+                    txtNombreD.Text = DGVdocente[0, pos].Value.ToString();
+                    dtpFechaD.Value = System.Convert.ToDateTime(DGVdocente[2, pos].Value);
+                    cbMateria.Text = DGVdocente[6, pos].Value.ToString();
+                    txtLegajoD.Text = DGVdocente[5, pos].Value.ToString();
+                    if (DGVdocente[4, pos].Value.ToString() == "Masculino")
+                    {
+                        rdMascD.Checked = true;
+                    }
+                    else if (DGVdocente[4, pos].Value.ToString() == "Femenino")
+                    {
+                        rdFemD.Checked = true;
+                    }
+                    else
+                    {
+                        rdOtro.Checked = true;
+                    }
+
                 }
-                ObjEntDocente.DNI2 = long.Parse(DGVdocente[1, pos].Value.ToString());
             }
+            catch (Exception er)
+            {
+
+                MessageBox.Show(er.Message);
+            }
+            
         }
         #endregion
 
         #region Metodos
 
-        private string SexoA()
+        private char SexoA()
         {
-            string SexoA = "No selecciono sexo";
+            char SexoA = 'N';
             if (rdFemD.Checked)
             {
-                SexoA = "F";
+                SexoA = 'F';
             }
             if (rdMascD.Checked)
             {
-                SexoA = "M";
+                SexoA = 'M';
             }
-            if (rdHelicoptero.Checked)
+            if (rdOtro.Checked)
             {
-                SexoA = "X";
+                SexoA = 'X';
             }
             return SexoA;
         }
@@ -221,9 +232,19 @@ namespace Carga_Alumno_Profesor
             {
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {
-
-                    DGVdocente.Rows.Add(dr[0].ToString(), dr[1].ToString(), Convert.ToDateTime(dr[2]).ToShortDateString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString());
-
+                    if (dr[4].ToString() == "M")
+                    {
+                        dr[4] = "Masculino";
+                    }
+                    if (dr[4].ToString() == "F")
+                    {
+                        dr[4] = "Femenino";
+                    }
+                    if (dr[4].ToString() == "O")
+                    {
+                        dr[4] = "Otro";
+                    }
+                    DGVdocente.Rows.Add(dr[0].ToString(), dr[1].ToString(), Convert.ToDateTime(dr[2]).ToShortDateString(), dr[3].ToString(), dr[4].ToString(), dr[6].ToString(), dr[5].ToString());
 
                 }
                 lblError.Text = "";
@@ -239,7 +260,7 @@ namespace Carga_Alumno_Profesor
             ObjEntDocente.Nombre = txtNombreD.Text;
             ObjEntDocente.Dni = long.Parse(txtDniD.Text);
             ObjEntDocente.FechNac = dtpFechaD.Value;
-            ObjEntDocente.Sexo = char.Parse(SexoA());
+            ObjEntDocente.Sexo = SexoA();
             ObjEntDocente.Legajo = txtLegajoD.Text;
             ObjEntDocente.Materia = cbMateria.Text;
             ObjEntDocente.Edad(dtpFechaD.Value.Year);

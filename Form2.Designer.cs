@@ -57,6 +57,7 @@ namespace Carga_Alumno_Profesor
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.AliceBlue;
             this.panel1.Controls.Add(this.btMod);
             this.panel1.Controls.Add(this.lblError);
             this.panel1.Controls.Add(this.rdOtro);
@@ -185,6 +186,7 @@ namespace Carga_Alumno_Profesor
             // 
             // DGValumno
             // 
+            this.DGValumno.AllowUserToAddRows = false;
             this.DGValumno.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGValumno.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DGValumno.Location = new System.Drawing.Point(0, 0);

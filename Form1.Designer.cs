@@ -31,9 +31,9 @@ namespace Carga_Alumno_Profesor
         {
             this.paChildform = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btClose = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.btClose = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +47,7 @@ namespace Carga_Alumno_Profesor
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.panel2.Controls.Add(this.btClose);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.button1);
@@ -55,6 +55,16 @@ namespace Carga_Alumno_Profesor
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(799, 33);
             this.panel2.TabIndex = 1;
+            // 
+            // btClose
+            // 
+            this.btClose.Location = new System.Drawing.Point(713, 3);
+            this.btClose.Name = "btClose";
+            this.btClose.Size = new System.Drawing.Size(75, 23);
+            this.btClose.TabIndex = 2;
+            this.btClose.Text = "Cerrar Form";
+            this.btClose.UseVisualStyleBackColor = true;
+            this.btClose.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -75,16 +85,6 @@ namespace Carga_Alumno_Profesor
             this.button1.Text = "Alumnos";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btClose
-            // 
-            this.btClose.Location = new System.Drawing.Point(713, 3);
-            this.btClose.Name = "btClose";
-            this.btClose.Size = new System.Drawing.Size(75, 23);
-            this.btClose.TabIndex = 2;
-            this.btClose.Text = "Cerrar Form";
-            this.btClose.UseVisualStyleBackColor = true;
-            this.btClose.Click += new System.EventHandler(this.button3_Click);
             // 
             // FormInicio
             // 

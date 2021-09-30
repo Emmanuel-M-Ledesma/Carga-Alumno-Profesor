@@ -68,7 +68,7 @@ namespace Datos
             if (accion == "Modificar")
             {
                 
-                orden = "Update Alumnos set Nombre = @Nombre, Dni= @Dni, [Fecha-de-nacimiento] = @Fecha, Edad =@Edad, Sexo= @Sexo, Legajo= @Legajo, Carrera=@Carrera where Dni = @Dni2" ;
+                orden = "Update Alumnos set Nombre = @Nombre, [Fecha-de-nacimiento] = @Fecha, Edad =@Edad, Sexo= @Sexo, Legajo= @Legajo, Carrera=@Carrera where Dni = @Dni" ;
                 SqlCommand cmd = new SqlCommand(orden, conexion);
                 try
                 {
@@ -80,7 +80,7 @@ namespace Datos
                     cmd.Parameters.AddWithValue("@Sexo", objAlumno.Sexo);
                     cmd.Parameters.AddWithValue("@Legajo", objAlumno.Legajo);
                     cmd.Parameters.AddWithValue("@Carrera", objAlumno.Carrera);                    
-                    cmd.Parameters.AddWithValue("@Dni2", objAlumno.DNI2);
+
                     resultado = cmd.ExecuteNonQuery();
                 }
                 catch (Exception ez)
