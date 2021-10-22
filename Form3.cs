@@ -275,15 +275,18 @@ namespace Carga_Alumno_Profesor
 
         }
 
+        private void txtLegajoD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+
+
         #endregion
 
-        //private void txtDniD_TextChanged(object sender, EventArgs e)
-        //{
-        //    DGVdocente.DataSource = DGVdocente;
-        //    BindingSource buscar = new BindingSource();
-        //    buscar.DataSource = DGVdocente.DataSource;
-        //    buscar.Filter = "Dni like '%" + txtDniD.Text + "%'";
-        //    DGVdocente.DataSource = buscar;
-        //}
+       
     }
 }

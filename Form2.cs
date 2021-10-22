@@ -265,8 +265,17 @@ namespace Carga_Alumno_Profesor
                 e.Handled = true;
             }
         }
-                
+
+        private void txtLegajo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
         #endregion
-                    
+
+
     }
 }

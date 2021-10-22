@@ -234,6 +234,7 @@ namespace Carga_Alumno_Profesor
             this.txtLegajoD.Name = "txtLegajoD";
             this.txtLegajoD.Size = new System.Drawing.Size(100, 20);
             this.txtLegajoD.TabIndex = 55;
+            this.txtLegajoD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLegajoD_KeyPress);
             // 
             // txtDniD
             // 
@@ -242,7 +243,6 @@ namespace Carga_Alumno_Profesor
             this.txtDniD.Name = "txtDniD";
             this.txtDniD.Size = new System.Drawing.Size(100, 20);
             this.txtDniD.TabIndex = 53;
-            
             this.txtDniD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDniD_KeyPress);
             // 
             // txtNombreD
