@@ -73,7 +73,7 @@ namespace Carga_Alumno_Profesor
                 nAdd = objNegAlumno.abmAlumnos("Alta", objEntAlumno);
                 if (nAdd == -1)
                 {
-                    MessageBox.Show("No pudo grabar alumnos en el sistema");
+                    MessageBox.Show("No pudo grabar el alumno en el sistema");
                 }
                 else
                 {
@@ -262,7 +262,12 @@ namespace Carga_Alumno_Profesor
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                e.Handled = true;
+                e.Handled = true; 
+                errorLeg.SetError(txtDni, "Solo se admiten numeros");
+            }
+            else
+            {
+                errorLeg.Clear();
             }
         }
 
@@ -271,6 +276,39 @@ namespace Carga_Alumno_Profesor
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
+                errorLeg.SetError(txtLegajo, "Solo se admiten numeros");
+            }
+            else
+            {
+                errorLeg.Clear();
+            }
+            
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true;
+                errorLeg.SetError(txtNombre, "No se admiten numeros");
+            }
+            else
+            {
+                errorLeg.Clear();
+            }
+
+        }
+
+        private void cbCarreraA_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true;
+                errorLeg.SetError(cbCarreraA, "No se admiten numeros");
+            }
+            else
+            {
+                errorLeg.Clear();
             }
         }
 

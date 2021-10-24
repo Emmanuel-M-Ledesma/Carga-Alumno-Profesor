@@ -74,7 +74,7 @@ namespace Carga_Alumno_Profesor
                 nAdd = ObjNegDocentes.abmDocentes("Alta", ObjEntDocente);
                 if (nAdd == -1)
                 {
-                    MessageBox.Show("No pudo grabar alumnos en el sistema");
+                    MessageBox.Show("No pudo grabar el docente en el sistema");
                 }
                 else
                 {
@@ -129,7 +129,7 @@ namespace Carga_Alumno_Profesor
                 nAdd = ObjNegDocentes.abmDocentes("Modificar", ObjEntDocente);
                 if (nAdd == -1)
                 {
-                    MessageBox.Show("No pudo grabar alumnos en el sistema");
+                    MessageBox.Show("No pudo modificar el docente en el sistema");
                 }
                 else
                 {
@@ -217,13 +217,7 @@ namespace Carga_Alumno_Profesor
             dtpFechaD.Text = "";
 
         }
-        private void txtDniD_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
+        
 
         private void FillDGV()
         {
@@ -280,13 +274,53 @@ namespace Carga_Alumno_Profesor
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
+                errorProvider1.SetError(txtLegajoD, "Solo se admiten numeros");
+            }
+            else
+            {
+                errorProvider1.Clear();
             }
         }
 
-
+        private void txtDniD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                errorProvider1.SetError(txtDniD, "Solo se admiten numeros");
+            }
+            else
+            {
+                errorProvider1.Clear();
+            }
+        }
+        private void txtNombreD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = true;
+                errorProvider1.SetError(txtNombreD, "No se admiten numeros");
+            }
+            else
+            {
+                errorProvider1.Clear();
+            }
+        }
+        private void cbMateria_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true;
+                errorProvider1.SetError(cbMateria, "No se admiten numeros");
+            }
+            else
+            {
+                errorProvider1.Clear();
+            }
+        }
 
         #endregion
 
-       
+
     }
 }

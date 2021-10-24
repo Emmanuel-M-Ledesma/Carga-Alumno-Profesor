@@ -34,10 +34,10 @@ namespace Datos
                     cmd.Parameters.AddWithValue("@Carrera", objAlumno.Carrera);
                     resultado = cmd.ExecuteNonQuery();
                 }
-                catch (Exception ez)
+                catch (Exception )
                 {
 
-                    MessageBox.Show(ez.Message);
+                    MessageBox.Show("El Dni ingresado ya existe en la tabla", "Error");
                 }
                 finally
                 {

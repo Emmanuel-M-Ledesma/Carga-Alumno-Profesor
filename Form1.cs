@@ -45,20 +45,27 @@ namespace Carga_Alumno_Profesor
 
         private void button1_Click(object sender, EventArgs e)
         {
+            lblTitulo.Text = "Planilla de alumnos";
             MinimumSize = new Size(816, 465);
             MaximumSize = new Size(816, 465);
             Size = new Size(816, 465);
             Tamaño();
             AbrirFormHijo(new frmAlumno());
+            button1.Enabled = false;
+            button2.Enabled = true;
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            lblTitulo.Text = "Planilla de docentes";
             MinimumSize = new Size(816, 465);
             MaximumSize = new Size(816, 465);
             Size = new Size(816, 465);
             Tamaño();
             AbrirFormHijo(new frmDocente());
+            button2.Enabled = false;
+            button1.Enabled = true;
         }
 
         private void Tamaño()
@@ -73,7 +80,8 @@ namespace Carga_Alumno_Profesor
             MaximumSize = new Size(287, 72);
             Size = new Size(287, 72);
             Activo.Close();
-            
+            button1.Enabled = true;
+            button2.Enabled = true;
         }
     }
 }
